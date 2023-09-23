@@ -1,0 +1,4 @@
+.game_details_thumb_inner .game_details_thumb img {
+  border-radius: 50px;
+  border: 7px rgba(255, 255, 255, 0.249) solid;
+}
