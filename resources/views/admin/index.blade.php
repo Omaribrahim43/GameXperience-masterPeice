@@ -1,322 +1,419 @@
-<!DOCTYPE html>
-<html dir="ltr" lang="en">
+@extends('admin.layouts.master')
+@section('content')
+    <div class="page-content">
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords"
-        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, materialpro admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, materialpro admin lite design, materialpro admin lite dashboard bootstrap 5 dashboard template">
-    <meta name="description"
-        content="Material Pro Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
-    <meta name="robots" content="noindex,nofollow">
-    <title>Material Pro Lite Template by WrapPixel</title>
-    <link rel="canonical" href="https://www.wrappixel.com/templates/materialpro-lite/" />
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('admin/assets/images/favicon.png') }}">
-    <!-- chartist CSS -->
-    <link href="{{ asset('admin/assets/plugins/chartist-js/dist/chartist.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('admin/assets/plugins/chartist-js/dist/chartist-init.css') }}" rel="stylesheet">
-    <link href="{{ asset('admin/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css') }}"
-        rel="stylesheet">
-    <!--This page css - Morris CSS -->
-    <link href="{{ asset('admin/assets/plugins/c3-master/c3.min.css') }}" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="{{ asset('admin/css/style.min.css') }}" rel="stylesheet">
-</head>
-
-<body>
-    <!-- ============================================================== -->
-    <!-- Main wrapper - style you can find in pages.scss -->
-    <!-- ============================================================== -->
-    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-        data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
-        <!-- ============================================================== -->
-        <!-- Page wrapper  -->
-        <!-- ============================================================== -->
-        <div class="preloader">
-            <div class="lds-ripple">
-                <div class="lds-pos"></div>
-                <div class="lds-pos"></div>
+        <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
+            <div>
+                <h4 class="mb-3 mb-md-0">Welcome to Dashboard</h4>
+            </div>
+            <div class="d-flex align-items-center flex-wrap text-nowrap">
+                <div class="input-group flatpickr wd-200 me-2 mb-2 mb-md-0" id="dashboardDate">
+                    <span class="input-group-text input-group-addon bg-transparent border-primary" data-toggle><i
+                            data-feather="calendar" class="text-primary"></i></span>
+                    <input type="text" class="form-control bg-transparent border-primary" placeholder="Select date"
+                        data-input>
+                </div>
+                <button type="button" class="btn btn-outline-primary btn-icon-text me-2 mb-2 mb-md-0">
+                    <i class="btn-icon-prepend" data-feather="printer"></i>
+                    Print
+                </button>
+                <button type="button" class="btn btn-primary btn-icon-text mb-2 mb-md-0">
+                    <i class="btn-icon-prepend" data-feather="download-cloud"></i>
+                    Download Report
+                </button>
             </div>
         </div>
-        <!-- ============================================================== -->
-        <!-- Topbar header - style you can find in pages.scss -->
-        <!-- ============================================================== -->
-        <header class="topbar" data-navbarbg="skin6">
-            <nav class="navbar top-navbar navbar-expand-md navbar-dark">
-                <div class="navbar-header" data-logobg="skin6">
-                    <!-- ============================================================== -->
-                    <!-- Logo -->
-                    <!-- ============================================================== -->
-                    <a class="navbar-brand ms-4" href="index.php">
-                        <!-- Logo icon -->
-                        <b class="logo-icon">
-                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                            <!-- Dark Logo icon -->
-                            <img src="{{ asset('admin/assets/images/logo.png') }}" alt="homepage" class="dark-logo"
-                                width="150px" />
 
-                        </b>
-                        <!--End Logo icon -->
-
-                    </a>
-                    <!-- ============================================================== -->
-                    <!-- End Logo -->
-                    <!-- ============================================================== -->
-                    <!-- ============================================================== -->
-                    <!-- toggle and nav items -->
-                    <!-- ============================================================== -->
-                    <a class="nav-toggler waves-effect waves-light text-white d-block d-md-none"
-                        href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
-                </div>
-                <!-- ============================================================== -->
-                <!-- End Logo -->
-                <!-- ============================================================== -->
-                <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
-                    <ul class="navbar-nav d-lg-none d-md-block ">
-                        <li class="nav-item">
-                            <a class="nav-toggler nav-link waves-effect waves-light text-white "
-                                href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
-                        </li>
-                    </ul>
-                    <!-- ============================================================== -->
-                    <!-- toggle and nav items -->
-                    <!-- ============================================================== -->
-                    <ul class="navbar-nav me-auto mt-md-0 ">
-                        <!-- ============================================================== -->
-                        <!-- Search -->
-                        <!-- ============================================================== -->
-
-                        <li class="nav-item search-box">
-                            <a class="nav-link text-muted" href="javascript:void(0)"><i class="ti-search"></i></a>
-                            <form class="app-search" style="display: none;">
-                                <input type="text" class="form-control" placeholder="Search &amp; enter"> <a
-                                    class="srh-btn"><i class="ti-close"></i></a>
-                            </form>
-                        </li>
-                    </ul>
-
-                    <!-- ============================================================== -->
-                    <!-- Right side toggle and nav items -->
-                    <!-- ============================================================== -->
-                    <ul class="navbar-nav">
-                        <!-- ============================================================== -->
-                        <!-- User profile and search -->
-                        <!-- ============================================================== -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#"
-                                id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="{{ asset('admin/assets/images/users/1.jpg') }}" alt="user"
-                                    class="profile-pic me-2">Omar
-                                Migdady
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown"></ul>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
-        <!-- ============================================================== -->
-        <!-- End Topbar header -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
-        <aside class="left-sidebar" data-sidebarbg="skin6">
-            <!-- Sidebar scroll-->
-            <div class="scroll-sidebar">
-                <!-- Sidebar navigation-->
-                <nav class="sidebar-nav">
-                    <ul id="sidebarnav">
-                        <!-- User Profile-->
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="index.php" aria-expanded="false"><i class="mdi me-2 mdi-gauge"></i><span
-                                    class="hide-menu">Dashboard</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="pages-profile.php" aria-expanded="false">
-                                <i class="mdi me-2 mdi-account-check"></i><span class="hide-menu">Profile</span></a>
-                        </li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="#" aria-expanded="false"><i
-                                    class="mdi me-2 mdi-account-multiple-outline"></i><span
-                                    class="hide-menu">Users</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="#" aria-expanded="false"><i
-                                    class="mdi me-2 mdi-gamepad-variant"></i><span class="hide-menu">Game
-                                    Centers</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="icon-material.php" aria-expanded="false"><i
-                                    class="mdi me-2 mdi-emoticon"></i><span class="hide-menu">Icon</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="pages-blank.php" aria-expanded="false"><i
-                                    class="mdi me-2 mdi-book-open-variant"></i><span
-                                    class="hide-menu">Blank</span></a>
-                        </li>
-                    </ul>
-                </nav>
-                <!-- End Sidebar navigation -->
-            </div>
-            <!-- End Sidebar scroll-->
-            <div class="sidebar-footer">
-                <div class="row">
-                    <div class="col-4 link-wrap">
-                        <!-- item-->
-                        <a href="" class="link" data-toggle="tooltip" title=""
-                            data-original-title="Settings"><i class="ti-settings"></i></a>
-                    </div>
-                    <div class="col-4 link-wrap">
-                        <!-- item-->
-                        <a href="" class="link" data-toggle="tooltip" title=""
-                            data-original-title="Email"><i class="mdi mdi-gmail"></i></a>
-                    </div>
-                    <div class="col-4 link-wrap">
-                        <!-- item-->
-                        <a href="" class="link" data-toggle="tooltip" title=""
-                            data-original-title="Logout"><i class="mdi mdi-power"></i></a>
-                    </div>
-                </div>
-            </div>
-        </aside>
-        <!-- ============================================================== -->
-        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
-        <div class="page-wrapper">
-            <!-- ============================================================== -->
-            <!-- Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <div class="page-breadcrumb">
-                <div class="row align-items-center">
-                    <div class="col-md-6 col-8 align-self-center">
-                        <h3 class="page-title mb-0 p-0">Dashboard</h3>
-                        <div class="d-flex align-items-center">
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-                                </ol>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ============================================================== -->
-            <!-- End Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- Container fluid  -->
-            <!-- ============================================================== -->
-            <div class="container-fluid">
-                <!-- ============================================================== -->
-                <!-- Sales chart -->
-                <!-- ============================================================== -->
-                <div class="row">
-                    <!-- Column -->
-                    <div class="col-lg-8">
+        <div class="row">
+            <div class="col-12 col-xl-12 stretch-card">
+                <div class="row flex-grow-1">
+                    <div class="col-md-4 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-baseline">
+                                    <h6 class="card-title mb-0">New Customers</h6>
+                                    <div class="dropdown mb-2">
+                                        <a type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                            <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                                                    data-feather="eye" class="icon-sm me-2"></i> <span
+                                                    class="">View</span></a>
+                                            <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                                                    data-feather="edit-2" class="icon-sm me-2"></i> <span
+                                                    class="">Edit</span></a>
+                                            <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                                                    data-feather="trash" class="icon-sm me-2"></i> <span
+                                                    class="">Delete</span></a>
+                                            <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                                                    data-feather="printer" class="icon-sm me-2"></i> <span
+                                                    class="">Print</span></a>
+                                            <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                                                    data-feather="download" class="icon-sm me-2"></i> <span
+                                                    class="">Download</span></a>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="row">
-                                    <div class="col-12">
-                                        <div class="d-flex flex-wrap align-items-center">
-                                            <div>
-                                                <h3 class="card-title">Sales Overview</h3>
-                                                <h6 class="card-subtitle">Ample Admin Vs Pixel Admin</h6>
-                                            </div>
-                                            <div class="ms-lg-auto mx-sm-auto mx-lg-0">
-                                                <ul class="list-inline d-flex">
-                                                    <li class="me-4">
-                                                        <h6 class="text-success"><i
-                                                                class="fa fa-circle font-10 me-2 "></i>Ample</h6>
-                                                    </li>
-                                                    <li>
-                                                        <h6 class="text-info"><i
-                                                                class="fa fa-circle font-10 me-2"></i>Pixel
-                                                        </h6>
-                                                    </li>
-                                                </ul>
-                                            </div>
+                                    <div class="col-6 col-md-12 col-xl-5">
+                                        <h3 class="mb-2">3,897</h3>
+                                        <div class="d-flex align-items-baseline">
+                                            <p class="text-success">
+                                                <span>+3.3%</span>
+                                                <i data-feather="arrow-up" class="icon-sm mb-1"></i>
+                                            </p>
                                         </div>
                                     </div>
-                                    <div class="col-12">
-                                        <div class="amp-pxl" style="height: 360px;">
-                                            <div class="chartist-tooltip"></div>
-                                        </div>
+                                    <div class="col-6 col-md-12 col-xl-7">
+                                        <div id="customersChart" class="mt-md-3 mt-xl-0"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-md-4 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
-                                <h3 class="card-title">Our Visitors </h3>
-                                <h6 class="card-subtitle">Different Devices Used to Visit</h6>
-                                <div id="visitor"
-                                    style="height: 290px; width: 100%; max-height: 290px; position: relative;"
-                                    class="c3">
-                                    <div class="c3-tooltip-container"
-                                        style="position: absolute; pointer-events: none; display: none;">
+                                <div class="d-flex justify-content-between align-items-baseline">
+                                    <h6 class="card-title mb-0">New Orders</h6>
+                                    <div class="dropdown mb-2">
+                                        <a type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                            <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                                                    data-feather="eye" class="icon-sm me-2"></i> <span
+                                                    class="">View</span></a>
+                                            <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                                                    data-feather="edit-2" class="icon-sm me-2"></i> <span
+                                                    class="">Edit</span></a>
+                                            <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                                                    data-feather="trash" class="icon-sm me-2"></i> <span
+                                                    class="">Delete</span></a>
+                                            <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                                                    data-feather="printer" class="icon-sm me-2"></i> <span
+                                                    class="">Print</span></a>
+                                            <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                                                    data-feather="download" class="icon-sm me-2"></i> <span
+                                                    class="">Download</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6 col-md-12 col-xl-5">
+                                        <h3 class="mb-2">35,084</h3>
+                                        <div class="d-flex align-items-baseline">
+                                            <p class="text-danger">
+                                                <span>-2.8%</span>
+                                                <i data-feather="arrow-down" class="icon-sm mb-1"></i>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-12 col-xl-7">
+                                        <div id="ordersChart" class="mt-md-3 mt-xl-0"></div>
                                     </div>
                                 </div>
                             </div>
-                            <div>
-                                <hr class="mt-0 mb-0">
-                            </div>
-                            <div class="card-body text-center ">
-                                <ul class="list-inline d-flex justify-content-center align-items-center mb-0">
-                                    <li class="me-4">
-                                        <h6 class="text-info"><i class="fa fa-circle font-10 me-2 "></i>Mobile</h6>
-                                    </li>
-                                    <li class="me-4">
-                                        <h6 class=" text-primary"><i class="fa fa-circle font-10 me-2"></i>Desktop
-                                        </h6>
-                                    </li>
-                                    <li class="me-4">
-                                        <h6 class=" text-success"><i class="fa fa-circle font-10 me-2"></i>Tablet</h6>
-                                    </li>
-                                </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-baseline">
+                                    <h6 class="card-title mb-0">Growth</h6>
+                                    <div class="dropdown mb-2">
+                                        <a type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                            <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                                            <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                                                    data-feather="eye" class="icon-sm me-2"></i> <span
+                                                    class="">View</span></a>
+                                            <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                                                    data-feather="edit-2" class="icon-sm me-2"></i> <span
+                                                    class="">Edit</span></a>
+                                            <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                                                    data-feather="trash" class="icon-sm me-2"></i> <span
+                                                    class="">Delete</span></a>
+                                            <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                                                    data-feather="printer" class="icon-sm me-2"></i> <span
+                                                    class="">Print</span></a>
+                                            <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                                                    data-feather="download" class="icon-sm me-2"></i> <span
+                                                    class="">Download</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6 col-md-12 col-xl-5">
+                                        <h3 class="mb-2">89.87%</h3>
+                                        <div class="d-flex align-items-baseline">
+                                            <p class="text-success">
+                                                <span>+2.8%</span>
+                                                <i data-feather="arrow-up" class="icon-sm mb-1"></i>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-12 col-xl-7">
+                                        <div id="growthChart" class="mt-md-3 mt-xl-0"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- ============================================================== -->
-            <!-- End Container fluid  -->
-            <!-- ============================================================== -->
-        </div>
-        <!-- ============================================================== -->
-        <!-- End Page wrapper  -->
-        <!-- ============================================================== -->
+        </div> <!-- row -->
+
+        <div class="row">
+            <div class="col-lg-12 col-xl-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-baseline mb-2">
+                            <h6 class="card-title mb-0">Monthly sales</h6>
+                            <div class="dropdown mb-2">
+                                <a type="button" id="dropdownMenuButton4" data-bs-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
+                                    <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                                            data-feather="eye" class="icon-sm me-2"></i> <span
+                                            class="">View</span></a>
+                                    <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                                            data-feather="edit-2" class="icon-sm me-2"></i> <span
+                                            class="">Edit</span></a>
+                                    <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                                            data-feather="trash" class="icon-sm me-2"></i> <span
+                                            class="">Delete</span></a>
+                                    <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                                            data-feather="printer" class="icon-sm me-2"></i> <span
+                                            class="">Print</span></a>
+                                    <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                                            data-feather="download" class="icon-sm me-2"></i> <span
+                                            class="">Download</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-muted">Sales are activities related to selling or the number of goods or
+                            services sold in a given time period.</p>
+                        <div id="monthlySalesChart"></div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- row -->
+
+        <div class="row">
+            <div class="col-lg-5 col-xl-4 grid-margin grid-margin-xl-0 stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-baseline mb-2">
+                            <h6 class="card-title mb-0">Inbox</h6>
+                            <div class="dropdown mb-2">
+                                <a type="button" id="dropdownMenuButton6" data-bs-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton6">
+                                    <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                                            data-feather="eye" class="icon-sm me-2"></i> <span
+                                            class="">View</span></a>
+                                    <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                                            data-feather="edit-2" class="icon-sm me-2"></i> <span
+                                            class="">Edit</span></a>
+                                    <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                                            data-feather="trash" class="icon-sm me-2"></i> <span
+                                            class="">Delete</span></a>
+                                    <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                                            data-feather="printer" class="icon-sm me-2"></i> <span
+                                            class="">Print</span></a>
+                                    <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                                            data-feather="download" class="icon-sm me-2"></i> <span
+                                            class="">Download</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <a href="javascript:;" class="d-flex align-items-center border-bottom pb-3">
+                                <div class="me-3">
+                                    <img src="https://via.placeholder.com/35x35" class="rounded-circle wd-35"
+                                        alt="user">
+                                </div>
+                                <div class="w-100">
+                                    <div class="d-flex justify-content-between">
+                                        <h6 class="text-body mb-2">Leonardo Payne</h6>
+                                        <p class="text-muted tx-12">12.30 PM</p>
+                                    </div>
+                                    <p class="text-muted tx-13">Hey! there I'm available...</p>
+                                </div>
+                            </a>
+                            <a href="javascript:;" class="d-flex align-items-center border-bottom py-3">
+                                <div class="me-3">
+                                    <img src="https://via.placeholder.com/35x35" class="rounded-circle wd-35"
+                                        alt="user">
+                                </div>
+                                <div class="w-100">
+                                    <div class="d-flex justify-content-between">
+                                        <h6 class="text-body mb-2">Carl Henson</h6>
+                                        <p class="text-muted tx-12">02.14 AM</p>
+                                    </div>
+                                    <p class="text-muted tx-13">I've finished it! See you so..</p>
+                                </div>
+                            </a>
+                            <a href="javascript:;" class="d-flex align-items-center border-bottom py-3">
+                                <div class="me-3">
+                                    <img src="https://via.placeholder.com/35x35" class="rounded-circle wd-35"
+                                        alt="user">
+                                </div>
+                                <div class="w-100">
+                                    <div class="d-flex justify-content-between">
+                                        <h6 class="text-body mb-2">Jensen Combs</h6>
+                                        <p class="text-muted tx-12">08.22 PM</p>
+                                    </div>
+                                    <p class="text-muted tx-13">This template is awesome!</p>
+                                </div>
+                            </a>
+                            <a href="javascript:;" class="d-flex align-items-center border-bottom py-3">
+                                <div class="me-3">
+                                    <img src="https://via.placeholder.com/35x35" class="rounded-circle wd-35"
+                                        alt="user">
+                                </div>
+                                <div class="w-100">
+                                    <div class="d-flex justify-content-between">
+                                        <h6 class="text-body mb-2">Amiah Burton</h6>
+                                        <p class="text-muted tx-12">05.49 AM</p>
+                                    </div>
+                                    <p class="text-muted tx-13">Nice to meet you</p>
+                                </div>
+                            </a>
+                            <a href="javascript:;" class="d-flex align-items-center border-bottom py-3">
+                                <div class="me-3">
+                                    <img src="https://via.placeholder.com/35x35" class="rounded-circle wd-35"
+                                        alt="user">
+                                </div>
+                                <div class="w-100">
+                                    <div class="d-flex justify-content-between">
+                                        <h6 class="text-body mb-2">Yaretzi Mayo</h6>
+                                        <p class="text-muted tx-12">01.19 AM</p>
+                                    </div>
+                                    <p class="text-muted tx-13">Hey! there I'm available...</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7 col-xl-8 stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-baseline mb-2">
+                            <h6 class="card-title mb-0">Projects</h6>
+                            <div class="dropdown mb-2">
+                                <a type="button" id="dropdownMenuButton7" data-bs-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    <i class="icon-lg text-muted pb-3px" data-feather="more-horizontal"></i>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton7">
+                                    <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                                            data-feather="eye" class="icon-sm me-2"></i> <span
+                                            class="">View</span></a>
+                                    <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                                            data-feather="edit-2" class="icon-sm me-2"></i> <span
+                                            class="">Edit</span></a>
+                                    <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                                            data-feather="trash" class="icon-sm me-2"></i> <span
+                                            class="">Delete</span></a>
+                                    <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                                            data-feather="printer" class="icon-sm me-2"></i> <span
+                                            class="">Print</span></a>
+                                    <a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                                            data-feather="download" class="icon-sm me-2"></i> <span
+                                            class="">Download</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="pt-0">#</th>
+                                        <th class="pt-0">Project Name</th>
+                                        <th class="pt-0">Start Date</th>
+                                        <th class="pt-0">Due Date</th>
+                                        <th class="pt-0">Status</th>
+                                        <th class="pt-0">Assign</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>NobleUI jQuery</td>
+                                        <td>01/01/2022</td>
+                                        <td>26/04/2022</td>
+                                        <td><span class="badge bg-danger">Released</span></td>
+                                        <td>Leonardo Payne</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>NobleUI Angular</td>
+                                        <td>01/01/2022</td>
+                                        <td>26/04/2022</td>
+                                        <td><span class="badge bg-success">Review</span></td>
+                                        <td>Carl Henson</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>NobleUI ReactJs</td>
+                                        <td>01/05/2022</td>
+                                        <td>10/09/2022</td>
+                                        <td><span class="badge bg-info">Pending</span></td>
+                                        <td>Jensen Combs</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>NobleUI VueJs</td>
+                                        <td>01/01/2022</td>
+                                        <td>31/11/2022</td>
+                                        <td><span class="badge bg-warning">Work in Progress</span>
+                                        </td>
+                                        <td>Amiah Burton</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>NobleUI Laravel</td>
+                                        <td>01/01/2022</td>
+                                        <td>31/12/2022</td>
+                                        <td><span class="badge bg-danger">Coming soon</span></td>
+                                        <td>Yaretzi Mayo</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>NobleUI NodeJs</td>
+                                        <td>01/01/2022</td>
+                                        <td>31/12/2022</td>
+                                        <td><span class="badge bg-primary">Coming soon</span></td>
+                                        <td>Carl Henson</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border-bottom">3</td>
+                                        <td class="border-bottom">NobleUI EmberJs</td>
+                                        <td class="border-bottom">01/05/2022</td>
+                                        <td class="border-bottom">10/11/2022</td>
+                                        <td class="border-bottom"><span class="badge bg-info">Pending</span>
+                                        </td>
+                                        <td class="border-bottom">Jensen Combs</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- row -->
+
     </div>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
-
-    <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
-    <script src="{{ asset('admin/assets/plugins/jquery/dist/jquery.min.js') }}"></script>
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="{{ asset('admin/assets/plugins/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('admin/js/app-style-switcher.js') }}"></script>
-    <!--Wave Effects -->
-    <script src="{{ asset('admin/js/waves.js') }}"></script>
-    <!--Menu sidebar -->
-    <script src="{{ asset('admin/js/sidebarmenu.js') }}"></script>
-    <!-- ============================================================== -->
-    <!-- This page plugins -->
-    <!-- ============================================================== -->
-    <!-- chartist chart -->
-    <script src="{{ asset('admin/assets/plugins/chartist-js/dist/chartist.min.js') }}"></script>
-    <script src="{{ asset('admin/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js') }}">
-    </script>
-    <!--c3 JavaScript -->
-    <script src="{{ asset('admin/assets/plugins/d3/d3.min.js') }}"></script>
-    <script src="{{ asset('admin/assets/plugins/c3-master/c3.min.js') }}"></script>
-    <!--Custom JavaScript -->
-    <script src="{{ asset('admin/js/pages/dashboards/dashboard1.js') }}"></script>
-    <script src="{{ asset('admin/js/custom.js') }}"></script>
-</body>
-
-</html>
+@endsection
