@@ -39,7 +39,7 @@ class DeviceTypesDataTable extends DataTable
                 return $img;
             })
             ->addColumn('status', function ($query) {
-                if ($query->status == 1) {
+                if ($query->status == 'active') {
                     $button = '<div class="form-check form-switch mb-2">
 								    <input type="checkbox" checked data-id="' . $query->id . '" class="form-check-input change-status" id="formSwitch1">
 							    </div>';

@@ -9,4 +9,14 @@ class LoungeDeviceTypes extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    function Lounges()
+    {
+        return $this->belongsTo(Lounges::class);
+    }
+
+    function deviceTypes()
+    {
+        return $this->belongsTo(DeviceTypes::class, 'device_type_id');
+    }
 }

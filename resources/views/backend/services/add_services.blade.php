@@ -39,8 +39,8 @@
                                 <div class="mb-3">
                                     <label>Status</label>
                                     <select id="inputStatus" class="form-control" name="status">
-                                        <option value="1">Active</option>
-                                        <option value="0">Inctive</option>
+                                        <option value="active">Active</option>
+                                        <option value="inactive">Inctive</option>
                                     </select>
                                 </div>
                                 <button type="submit" class="btn btn-primary me-2">Save Changes</button>

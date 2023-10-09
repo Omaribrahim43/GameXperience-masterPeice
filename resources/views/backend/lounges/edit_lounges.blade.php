@@ -61,9 +61,9 @@
                                 <div class="mb-3">
                                     <label>Status</label>
                                     <select id="inputStatus" class="form-control" name="status">
-                                        <option {{ $lounges->status == 1 ? 'selected' : '' }} value="1">Active
+                                        <option {{ $lounges->status == 'active' ? 'selected' : '' }} value="1">Active
                                         </option>
-                                        <option {{ $lounges->status == 0 ? 'selected' : '' }} value="0">Inctive
+                                        <option {{ $lounges->status == 'inactive' ? 'selected' : '' }} value="0">Inctive
                                         </option>
                                     </select>
                                 </div>
@@ -78,7 +78,7 @@
         </div>
 
     </div>
-    <script>
+     <script>
         $(document).ready(function() {
             $('#image').change(function(e) {
                 var reader = new FileReader();

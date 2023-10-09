@@ -14,4 +14,9 @@ class DeviceTypes extends Model
     {
         return $this->hasMany(Device::class);
     }
+
+    function LoungeDeviceTypes()
+    {
+        return $this->hasMany(LoungeDeviceTypes::class);
+    }
 }

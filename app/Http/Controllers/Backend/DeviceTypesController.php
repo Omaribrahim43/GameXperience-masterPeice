@@ -119,7 +119,7 @@ class DeviceTypesController extends Controller
     public function changeStatus(Request $request)
     {
         $deviceTypes = DeviceTypes::findOrFail($request->id);
-        $deviceTypes->status = $request->status == 'true' ? 1 : 0;
+        $deviceTypes->status = $request->status == 'true' ? 'active' : 'inactive';
         $deviceTypes->save();
 
         return response(['message' => 'Status has been updated!']);
