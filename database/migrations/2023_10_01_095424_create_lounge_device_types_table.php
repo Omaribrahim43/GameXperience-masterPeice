@@ -16,8 +16,6 @@ return new class extends Migration
             $table->unsignedBigInteger('lounge_id');
             $table->unsignedBigInteger('device_type_id');
             $table->string('price_per_hour');
-            $table->string('image');
-            $table->string('type');
             $table->timestamps();
 
             $table->foreign('lounge_id')->references('id')->on('lounges')->onDelete('CASCADE');

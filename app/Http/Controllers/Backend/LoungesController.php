@@ -129,7 +129,7 @@ class LoungesController extends Controller
     public function changeStatus(Request $request)
     {
         $lounge = Lounges::findOrFail($request->id);
-        $lounge->status = $request->status == 'true' ? 1 : 0;
+        $lounge->status = $request->status == 'true' ? 'active' : 'inactive';
         $lounge->save();
 
         return response(['message' => 'Status has been updated!']);

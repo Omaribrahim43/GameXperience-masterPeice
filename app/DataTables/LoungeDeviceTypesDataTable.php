@@ -31,15 +31,14 @@ class LoungeDeviceTypesDataTable extends DataTable
                 return $deleteBtn;
             })
             ->addColumn('image', function ($query) {
-                if (empty(!$query->image)) {
-                    $img = "<img width='250px' src='" . asset($query->image) . "'></img>";
-                } else {
-                    $img = "<img width='250px' src='" . url('uploads/no_image.jpg') . "'></img>";
-                }
+                $img = "<img width='250px' src='" . asset($query->deviceTypes->image) . "'></img>";
                 return $img;
             })
+            ->addColumn('type', function ($query) {
+                return $query->deviceTypes->type;
+            })
             ->addColumn('status', function ($query) {
-                if ($query->status == 1) {
+                if ($query->status == 'active') {
                     $button = '<div class="form-check form-switch mb-2">
 								    <input type="checkbox" checked data-id="' . $query->id . '" class="form-check-input change-status" id="formSwitch1">
 							    </div>';
@@ -52,7 +51,7 @@ class LoungeDeviceTypesDataTable extends DataTable
                 }
             })
             ->addColumn('price_per_hour', function ($query) {
-                return $query->price_per_hour." JD" ;
+                return $query->price_per_hour . " JD";
             })
             ->rawColumns(['image', 'action', 'status'])
             ->setRowId('id');
@@ -104,6 +103,7 @@ class LoungeDeviceTypesDataTable extends DataTable
         return [
             Column::make('id'),
             Column::make('image'),
+            Column::make('type'),
             Column::make('price_per_hour'),
             Column::make('status'),
             Column::computed('action')

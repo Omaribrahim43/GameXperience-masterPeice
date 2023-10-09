@@ -83,9 +83,9 @@
                                         <div class="mb-3">
                                             <label>Status</label>
                                             <select id="inputStatus" class="form-control" name="status">
-                                                <option {{ $users->status == 1 ? 'selected' : '' }} value="1">Active
+                                                <option {{ $users->status == 'active' ? 'selected' : '' }} value="1">Active
                                                 </option>
-                                                <option {{ $users->status == 0 ? 'selected' : '' }} value="0">Inctive
+                                                <option {{ $users->status == 'active' ? 'selected' : '' }} value="0">Inctive
                                                 </option>
                                             </select>
                                         </div>

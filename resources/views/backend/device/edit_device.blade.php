@@ -62,8 +62,8 @@
                                         <div class="mb-3">
                                             <label>VIP room</label>
                                             <select id="inputStatus" class="form-control" name="vip_room">
-                                                <option {{ $device->status == 1 ? 'selected' : '' }} value="1">Yes</option>
-                                                <option {{ $device->status == 0 ? 'selected' : '' }} value="0">No</option>
+                                                <option {{ $device->status == 'active' ? 'selected' : '' }} value="1">Yes</option>
+                                                <option {{ $device->status == 'inactive' ? 'selected' : '' }} value="0">No</option>
                                             </select>
                                         </div>
                                     </div>

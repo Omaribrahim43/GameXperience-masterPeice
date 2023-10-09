@@ -152,7 +152,7 @@ class UserController extends Controller
     public function changeStatus(Request $request)
     {
         $user = User::findOrFail($request->id);
-        $user->status = $request->status == 'true' ? 1 : 0;
+        $user->status = $request->status == 'true' ? 'active' : 'inactive';
         $user->save();
 
         return response(['message' => 'Status has been updated!']);

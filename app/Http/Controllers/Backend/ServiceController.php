@@ -121,7 +121,7 @@ class ServiceController extends Controller
     public function changeStatus(Request $request)
     {
         $service = Services::findOrFail($request->id);
-        $service->status = $request->status == 'true' ? 1 : 0;
+        $service->status = $request->status == 'true' ? 'active' : 'inactive';
         $service->save();
 
         return response(['message' => 'Status has been updated!']);

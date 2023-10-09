@@ -41,8 +41,8 @@
                                 <div class="mb-3">
                                     <label>Status</label>
                                     <select id="inputStatus" class="form-control" name="status">
-                                        <option {{ $deviceType->status == 1 ? 'selected' : '' }} value="1">Active</option>
-                                        <option {{ $deviceType->status == 0 ? 'selected' : '' }} value="0">Inctive</option>
+                                        <option {{ $deviceType->status == 'active' ? 'selected' : '' }} value="1">Active</option>
+                                        <option {{ $deviceType->status == 'inactive' ? 'selected' : '' }} value="0">Inctive</option>
                                     </select>
                                 </div>
                                 <button type="submit" class="btn btn-primary me-2">Update Changes</button>
