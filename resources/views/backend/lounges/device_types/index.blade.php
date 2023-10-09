@@ -2,9 +2,6 @@
 
 @section('content')
     <!-- Main Content -->
-
-
-
     <div class="page-content">
         <div class="row my-3">
             <div class="col-md-12 stretch-card grid-margin grid-margin-md-0">
