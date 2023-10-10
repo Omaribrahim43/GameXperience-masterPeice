@@ -58,27 +58,11 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="collapse" href="#devices" role="button" aria-expanded="false"
-                    aria-controls="devices">
+                <a class="nav-link" href="{{ route('device-types.index') }}">
                     <i class="link-icon" data-feather="anchor"></i>
-                    <span class="link-title">Devices</span>
-                    <i class="link-arrow" data-feather="chevron-down"></i>
+                    <span class="link-title">Device Types</span>
                 </a>
-                <div class="collapse" id="devices">
-                    <ul class="nav sub-menu">
-                        <li class="nav-item">
-                            <a href="{{ route('device-types.index') }}" class="nav-link">Device Types</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('device.index') }}" class="nav-link">Devices</a>
-                        </li>
-                    </ul>
-                </div>
             </li>
-
-
-
-
             <li class="nav-item">
                 <a href="pages/apps/chat.html" class="nav-link">
                     <i class="link-icon" data-feather="message-square"></i>

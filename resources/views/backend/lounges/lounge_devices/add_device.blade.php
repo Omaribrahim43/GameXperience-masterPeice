@@ -10,39 +10,27 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <h6 class="card-title">Add Devices</h6>
+                            <h6 class="card-title">Add a Device for {{ $lounge->name }}</h6>
 
                             <form class="forms-sample" method="POST" action="{{ route('device.store') }}"
                                 enctype="multipart/form-data">
                                 @csrf
+                                <input type="hidden" name="lounge_id" value="{{ $lounge->id }}">
                                 <div class="mb-3">
                                     <img class="wd-100 rounded-circle mb-4" id="showImage"
                                         src="{{ url('uploads/no_image.jpg') }}"><br>
                                     <label for="device_image" class="form-label">Device image</label>
                                     <input type="file" class="form-control" name="device_image" id="image">
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-6 col-xl-6">
-                                        <div class="mb-3">
-                                            <label for="lounge_id" class="form-label">Game Center</label>
-                                            <select name="lounge_id" class="form-control">
-                                                <option value="">Choose</option>
-                                                @foreach ($lounges as $lounge)
-                                                    <option value="{{ $lounge->id }}">{{ $lounge->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-xl-6">
-                                        <div class="mb-3">
-                                            <label for="device_type_id" class="form-label">Device Type</label>
-                                            <select name="device_type_id" class="form-control">
-                                                <option value="">Choose</option>
-                                                @foreach ($deviceTypes as $deviceType)
-                                                    <option value="{{ $deviceType->id }}">{{ $deviceType->type }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+                                <div class="col-md-6 col-xl-6">
+                                    <div class="mb-3">
+                                        <label for="device_type_id" class="form-label">Device Type</label>
+                                        <select name="device_type_id" class="form-control">
+                                            <option value="">Choose</option>
+                                            @foreach ($deviceTypes as $deviceType)
+                                                <option value="{{ $deviceType->id }}">{{ $deviceType->type }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="row">

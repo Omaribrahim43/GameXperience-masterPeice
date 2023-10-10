@@ -16,19 +16,20 @@ class DeviceController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(DeviceDataTable $dataTable)
+    public function index(DeviceDataTable $dataTable, Request $request)
     {
-        return $dataTable->render('backend.device.all_device');
+        $lounge = Lounges::findOrFail($request->lounge);
+        return $dataTable->render('backend.lounges.lounge_devices.all_device', compact('lounge'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        $lounges = Lounges::all();
         $deviceTypes = DeviceTypes::all();
-        return view('backend.device.add_device', compact('lounges', 'deviceTypes'));
+        $lounge = Lounges::findOrFail($request->lounge);
+        return view('backend.lounges.lounge_devices.add_device', compact('deviceTypes', 'lounge'));
     }
 
     /**
@@ -79,9 +80,8 @@ class DeviceController extends Controller
     public function edit(string $id)
     {
         $device = Device::findOrFail($id);
-        $lounges = Lounges::all();
         $deviceTypes = DeviceTypes::all();
-        return view('backend.device.edit_device', compact('device', 'lounges', 'deviceTypes'));
+        return view('backend.lounges.lounge_devices.edit_device', compact('device', 'deviceTypes'));
     }
 
     /**

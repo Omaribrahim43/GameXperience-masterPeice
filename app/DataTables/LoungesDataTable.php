@@ -32,8 +32,9 @@ class LoungesDataTable extends DataTable
                     <i class="fa-solid fa-gear"></i>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                    <a class="dropdown-item" href="' . route('lounge-gallery.index', ['lounge' => $query->id]) . '">Image Gallery</a>
-                    <a class="dropdown-item" href="' . route('lounge-device-types.index', ['lounge' => $query->id]) . '">Device Types</a>
+                        <a class="dropdown-item" href="' . route('lounge-gallery.index', ['lounge' => $query->id]) . '">Image Gallery</a>
+                        <a class="dropdown-item" href="' . route('lounge-device-types.index', ['lounge' => $query->id]) . '">Device Types</a>
+                        <a class="dropdown-item" href="' . route('device.index', ['lounge' => $query->id]) . '">Devices</a>
                     </div>
                 </div>';
                 return $editBtn . $deleteBtn . $moreBtn;

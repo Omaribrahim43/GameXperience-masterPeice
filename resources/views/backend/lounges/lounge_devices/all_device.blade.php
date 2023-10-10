@@ -5,8 +5,8 @@
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Devices</h4>
-                        <a href="{{ route('device.create') }}" class="btn btn-inverse-info">Add Device</a>
+                        <h4 class="card-title">{{ $lounge->name }} Devices</h4>
+                        <a href="{{ route('device.create', ['lounge' => $lounge->id]) }}" class="btn btn-inverse-info">Add Device</a>
                     </div>
                     <div class="card-body">
                         {{ $dataTable->table() }}
