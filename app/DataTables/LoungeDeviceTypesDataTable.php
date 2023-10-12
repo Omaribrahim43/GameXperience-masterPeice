@@ -37,19 +37,6 @@ class LoungeDeviceTypesDataTable extends DataTable
             ->addColumn('type', function ($query) {
                 return $query->deviceTypes->type;
             })
-            ->addColumn('status', function ($query) {
-                if ($query->status == 'active') {
-                    $button = '<div class="form-check form-switch mb-2">
-								    <input type="checkbox" checked data-id="' . $query->id . '" class="form-check-input change-status" id="formSwitch1">
-							    </div>';
-                    return $button;
-                } else {
-                    $button = '<div class="form-check form-switch mb-2">
-								    <input type="checkbox" data-id="' . $query->id . '" class="form-check-input change-status" id="formSwitch1">
-							    </div>';
-                    return $button;
-                }
-            })
             ->addColumn('price_per_hour', function ($query) {
                 return $query->price_per_hour . " JD";
             })
@@ -105,7 +92,6 @@ class LoungeDeviceTypesDataTable extends DataTable
             Column::make('image'),
             Column::make('type'),
             Column::make('price_per_hour'),
-            Column::make('status'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)

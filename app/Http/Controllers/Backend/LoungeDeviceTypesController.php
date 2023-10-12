@@ -61,7 +61,7 @@ class LoungeDeviceTypesController extends Controller
                 'alert-type' => 'error',
             );
 
-            return redirect()->back()->with($notification);
+            return redirect()->route('device.index', ['lounge' => $request->id])->with($notification);
         }
     }
 
@@ -94,6 +94,9 @@ class LoungeDeviceTypesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $deviceType = LoungeDeviceTypes::findOrFail($id);
+        $deviceType->delete();
+
+        return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
     }
 }

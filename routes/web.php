@@ -76,7 +76,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::put('device/change-status', [DeviceController::class, 'changeStatus'])->name('device.change-status');
     Route::resource('device', DeviceController::class);
-
 }); // End of Group Admin Middleware
 
 Route::middleware(['auth', 'role:agent'])->group(function () {

@@ -22,30 +22,16 @@
                                     <label for="device_image" class="form-label">Device image</label>
                                     <input type="file" class="form-control" name="device_image" id="image">
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-6 col-xl-6">
-                                        <div class="mb-3">
-                                            <label for="lounge_id" class="form-label">Game Center</label>
-                                            <select name="lounge_id" class="form-control">
-                                                <option value="">Choose</option>
-                                                @foreach ($lounges as $lounge)
-                                                    <option {{ $lounge->id == $device->lounge_id ? 'selected' : '' }}
-                                                        value="{{ $lounge->id }}">{{ $lounge->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-xl-6">
-                                        <div class="mb-3">
-                                            <label for="device_type_id" class="form-label">Device Type</label>
-                                            <select name="device_type_id" class="form-control">
-                                                <option value="">Choose</option>
-                                                @foreach ($deviceTypes as $deviceType)
-                                                    <option {{ $deviceType->id == $device->device_type_id ? 'selected' : '' }}
-                                                        value="{{ $deviceType->id }}">{{ $deviceType->type }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+                                <div class="col-md-6 col-xl-6">
+                                    <div class="mb-3">
+                                        <label for="device_type_id" class="form-label">Device Type</label>
+                                        <select name="device_type_id" class="form-control">
+                                            <option value="">Choose</option>
+                                            @foreach ($deviceTypes as $deviceType)
+                                                <option {{ $deviceType->id == $device->device_type_id ? 'selected' : '' }}
+                                                    value="{{ $deviceType->id }}">{{ $deviceType->type }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -53,8 +39,10 @@
                                         <div class="mb-3">
                                             <label>Status</label>
                                             <select id="inputStatus" class="form-control" name="status">
-                                                <option {{ $device->status == 1 ? 'selected' : '' }} value="1">Active</option>
-                                                <option {{ $device->status == 0 ? 'selected' : '' }} value="0">Inctive</option>
+                                                <option {{ $device->status == 1 ? 'selected' : '' }} value="1">Active
+                                                </option>
+                                                <option {{ $device->status == 0 ? 'selected' : '' }} value="0">Inctive
+                                                </option>
                                             </select>
                                         </div>
                                     </div>
@@ -62,8 +50,10 @@
                                         <div class="mb-3">
                                             <label>VIP room</label>
                                             <select id="inputStatus" class="form-control" name="vip_room">
-                                                <option {{ $device->status == 'active' ? 'selected' : '' }} value="1">Yes</option>
-                                                <option {{ $device->status == 'inactive' ? 'selected' : '' }} value="0">No</option>
+                                                <option {{ $device->status == 'active' ? 'selected' : '' }} value="1">
+                                                    Yes</option>
+                                                <option {{ $device->status == 'inactive' ? 'selected' : '' }}
+                                                    value="0">No</option>
                                             </select>
                                         </div>
                                     </div>

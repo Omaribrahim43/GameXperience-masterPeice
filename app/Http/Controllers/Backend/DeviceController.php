@@ -9,6 +9,7 @@ use App\Models\DeviceTypes;
 use App\Models\Lounges;
 use App\Traits\ImageUploadTrait;
 use Illuminate\Http\Request;
+use DB;
 
 class DeviceController extends Controller
 {
@@ -46,6 +47,20 @@ class DeviceController extends Controller
             'device_info' => ['required', 'max:100'],
         ]);
 
+        $validRelationship = DB::table('lounge_device_types')
+            ->where('lounge_id', $request->lounge_id)
+            ->where('device_type_id', $request->device_type_id)
+            ->exists();
+
+        if (!$validRelationship) {
+            $notification = array(
+                'message' => 'This Game Center doesnt have such a device type.',
+                'alert-type' => 'error',
+            );
+
+            return redirect()->back()->with($notification);
+        }
+
         $device = new Device();
 
         $imagePath = $this->uploadImage($request, 'device_image', 'uploads');
@@ -63,7 +78,7 @@ class DeviceController extends Controller
             'alert-type' => 'success',
         );
 
-        return redirect()->route('device.index')->with($notification);
+        return redirect()->back()->with($notification);
     }
 
     /**
@@ -77,11 +92,12 @@ class DeviceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Request $request, string $id)
     {
         $device = Device::findOrFail($id);
         $deviceTypes = DeviceTypes::all();
-        return view('backend.lounges.lounge_devices.edit_device', compact('device', 'deviceTypes'));
+        $lounge = Lounges::findOrFail($request->lounge);
+        return view('backend.lounges.lounge_devices.edit_device', compact('device', 'deviceTypes', 'lounge'));
     }
 
     /**
@@ -91,8 +107,8 @@ class DeviceController extends Controller
     {
         $request->validate([
             'device_image' => ['nullable', 'max:4196', 'image'],
-            'lounge_id' => ['required'],
             'device_type_id' => ['required'],
+            'lounge_id' => ['required'],
             'vip_room' => ['required'],
             'status' => ['required'],
             'device_info' => ['required', 'max:100'],
@@ -115,7 +131,7 @@ class DeviceController extends Controller
             'alert-type' => 'success',
         );
 
-        return redirect()->route('device.index')->with($notification);
+        return redirect()->route('device.index', ['lounge' => $request->id])->with($notification);
     }
 
     /**

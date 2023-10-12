@@ -38,6 +38,9 @@ class ServicesDataTable extends DataTable
                 }
                 return $img;
             })
+            ->addColumn('description', function ($query) {
+                return "<p>$query->description</p>";
+            })
             ->addColumn('status', function ($query) {
                 if ($query->status == 'active') {
                     $button = '<div class="form-check form-switch mb-2">
@@ -51,7 +54,7 @@ class ServicesDataTable extends DataTable
                     return $button;
                 }
             })
-            ->rawColumns(['image', 'action', 'status'])
+            ->rawColumns(['image', 'action', 'status', 'description'])
             ->setRowId('id');
     }
 
@@ -98,8 +101,8 @@ class ServicesDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('id')->width(60),
-            Column::make('image')->width(100),
+            Column::make('id'),
+            Column::make('image'),
             Column::make('title'),
             Column::make('description'),
             Column::make('status'),
