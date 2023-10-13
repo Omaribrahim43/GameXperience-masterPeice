@@ -42,4 +42,13 @@ class User extends Authenticatable
     {
         return $this->hasMany(Lounges::class);
     }
+
+    function userBalance()
+    {
+        return $this->hasMany(UserBalance::class);
+    }
+    function paymentMethod()
+    {
+        return $this->hasMany(PaymentMethod::class);
+    }
 }

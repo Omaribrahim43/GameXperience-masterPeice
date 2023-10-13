@@ -27,8 +27,9 @@ class NormalUsersDataTable extends DataTable
             ->addColumn('action', function ($query) {
                 $editBtn = "<a href='" . route('users.edit', $query->id) . "' class='btn btn-icon btn-inverse-primary'><i class='fa-solid fa-pen-to-square'></i></a>";
                 $deleteBtn = "<a href='" . route('users.destroy', $query->id) . "' class='btn btn-icon btn-inverse-danger mx-2 delete-item'><i class='fa-solid fa-trash-can'></i></a>";
+                $balanceBtn = "<a href='" . route('user-balance.index', $query->id) . "' class='btn btn-icon btn-inverse-info'><i class='fa-regular fa-credit-card'></i></a>";
 
-                return $editBtn . $deleteBtn;
+                return $editBtn . $deleteBtn . $balanceBtn;
             })
             ->addColumn('image', function ($query) {
                 if (empty(!$query->photo)) {

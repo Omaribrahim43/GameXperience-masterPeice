@@ -61,7 +61,7 @@ class LoungeDeviceTypesController extends Controller
                 'alert-type' => 'error',
             );
 
-            return redirect()->route('device.index', ['lounge' => $request->id])->with($notification);
+            return redirect()->back()->with($notification);
         }
     }
 

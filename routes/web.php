@@ -3,12 +3,15 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\Backend\AdminUserController;
+use App\Http\Controllers\Backend\BookingsController;
 use App\Http\Controllers\Backend\DeviceController;
 use App\Http\Controllers\Backend\DeviceTypesController;
 use App\Http\Controllers\Backend\LoungeDeviceTypesController;
 use App\Http\Controllers\Backend\LoungeGalleryController;
 use App\Http\Controllers\Backend\LoungesController;
+use App\Http\Controllers\Backend\PaymentMethodController;
 use App\Http\Controllers\Backend\ServiceController;
+use App\Http\Controllers\Backend\UserBalanceController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Models\LoungeGallery;
@@ -76,6 +79,13 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::put('device/change-status', [DeviceController::class, 'changeStatus'])->name('device.change-status');
     Route::resource('device', DeviceController::class);
+
+    Route::resource('user-balance', UserBalanceController::class);
+
+    Route::resource('payment-method', PaymentMethodController::class);
+
+    Route::resource('bookings', BookingsController::class);
+
 }); // End of Group Admin Middleware
 
 Route::middleware(['auth', 'role:agent'])->group(function () {
