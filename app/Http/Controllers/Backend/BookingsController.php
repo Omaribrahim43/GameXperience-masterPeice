@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\DataTables\BookingsDataTable;
 use App\Http\Controllers\Controller;
+use App\Models\Bookings;
 use Illuminate\Http\Request;
 
 class BookingsController extends Controller
@@ -61,6 +62,18 @@ class BookingsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $bookings = Bookings::findOrFail($id);
+        $bookings->delete();
+
+        return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
+    }
+
+    public function changeStatus(Request $request)
+    {
+        $bookings = Bookings::findOrFail($request->id);
+        $bookings->booking_status = $request->status == 'true' ? 'accepted' : 'rejected';
+        $bookings->save();
+
+        return response(['message' => 'Status has been updated!']);
     }
 }

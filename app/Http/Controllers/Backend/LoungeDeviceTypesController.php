@@ -40,10 +40,13 @@ class LoungeDeviceTypesController extends Controller
             'price_per_hour' => 'required',
         ]);
 
-        $LoungeDeviceType = new LoungeDeviceTypes();
-        // $count = $LoungeDeviceType->device_type_id->count();
-        $count = LoungeDeviceTypes::where('device_type_id', '=', $request->device_type)->count();
+        // Check if the combination of device type and lounge ID already exists
+        $count = LoungeDeviceTypes::where('device_type_id', $request->device_type)
+            ->where('lounge_id', $request->lounge_id)
+            ->count();
+
         if ($count == 0) {
+            $LoungeDeviceType = new LoungeDeviceTypes();
             $LoungeDeviceType->device_type_id = $request->device_type;
             $LoungeDeviceType->lounge_id = $request->lounge_id;
             $LoungeDeviceType->price_per_hour = $request->price_per_hour;
@@ -64,6 +67,7 @@ class LoungeDeviceTypesController extends Controller
             return redirect()->back()->with($notification);
         }
     }
+
 
     /**
      * Display the specified resource.

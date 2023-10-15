@@ -4,11 +4,13 @@
         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">Bookings</h4>
-                    </div>
                     <div class="card-body">
-                        {{ $dataTable->table() }}
+                        <h6 class="card-title">Bookings</h6>
+                        <div class="table-responsive">
+                            <div id="dataTableExample_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+                                {{ $dataTable->table() }}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -26,7 +28,7 @@
                 let id = $(this).data('id')
 
                 $.ajax({
-                    url: "{{ route('device-types.change-status') }}",
+                    url: "{{ route('bookings.change-status') }}",
                     method: 'PUT',
                     data: {
                         status: isChecked,

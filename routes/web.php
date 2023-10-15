@@ -84,6 +84,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::resource('payment-method', PaymentMethodController::class);
 
+    Route::put('bookings/change-status', [BookingsController::class, 'changeStatus'])->name('bookings.change-status');
     Route::resource('bookings', BookingsController::class);
 
 }); // End of Group Admin Middleware

@@ -4,6 +4,7 @@ namespace App\DataTables;
 
 use App\Models\Device;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
+use Illuminate\Http\Request;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
 use Yajra\DataTables\Html\Button;
@@ -75,9 +76,10 @@ class DeviceDataTable extends DataTable
      * @param \App\Models\Device $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Device $model): QueryBuilder
+    public function query(Device $model, Request $request): QueryBuilder
     {
-        return $model->newQuery();
+        $loungeId = $request->lounge;
+        return $model->newQuery()->where('lounge_id', $loungeId);
     }
 
     /**
