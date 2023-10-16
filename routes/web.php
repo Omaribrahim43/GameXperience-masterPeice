@@ -14,6 +14,7 @@ use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Backend\UserBalanceController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController as ControllersUserController;
 use App\Models\LoungeGallery;
 use Illuminate\Support\Facades\Route;
 
@@ -32,10 +33,11 @@ Route::get('/', function () {
     return view('frontend.home.index');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
+// User group middleware
+Route::middleware(['auth', 'role:user'])->group(function () {
+    Route::get('/dashboard', [ControllersUserController::class, 'UserDashboard'])->name('user.dashboard');
+    Route::get('user/logout', [ControllersUserController::class, 'UserLogout'])->name('user.logout');
+}); // End of Group User Middleware
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -86,7 +88,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::put('bookings/change-status', [BookingsController::class, 'changeStatus'])->name('bookings.change-status');
     Route::resource('bookings', BookingsController::class);
-
 }); // End of Group Admin Middleware
 
 Route::middleware(['auth', 'role:agent'])->group(function () {
