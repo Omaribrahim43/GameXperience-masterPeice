@@ -131,7 +131,7 @@ class DeviceController extends Controller
             'alert-type' => 'success',
         );
 
-        return redirect()->route('device.index', ['lounge' => $request->id])->with($notification);
+        return redirect()->back()->with($notification);
     }
 
     /**
