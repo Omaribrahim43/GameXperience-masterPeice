@@ -5,7 +5,8 @@
             <div class="col-12">
                 <div class="main_header d-flex justify-content-between align-items-center">
                     <div class="header_logo">
-                        <a class="sticky_none" href="index.php"><img src="{{ asset('frontend/assets/img/logo/logo.png') }}" /></a>
+                        <a class="sticky_none" href="index.php"><img
+                                src="{{ asset('frontend/assets/img/logo/logo.png') }}" /></a>
                     </div>
                     <!--main menu start-->
                     <div class="main_menu d-none d-lg-block">
@@ -16,20 +17,34 @@
                                 <li><a href="all-game.php">Lounges</a></li>
                                 <li><a href="community.php">Community</a></li>
                                 <li><a href="contact.php">Contact</a></li>
-                                <li><a href="faq.php">FAQ</a></li>
+                                @auth
+                                    <li><a href="{{ route('user.logout') }}">Logout</a></li>
+                                @endauth
                             </ul>
                         </nav>
                     </div>
                     <!--main menu end-->
                     <div class="header_right_sidebar d-flex align-items-center">
-                        <div class="sing_up_btn">
-                            <a class="btn btn-link" href="registration.php">SIGN UP
-                                <img src="{{ asset('frontend/assets/img/icon/arrrow-icon2.webp') }}" />
-                            </a>
-                        </div>
-                        <div class="canvas_open">
-                            <a href="javascript:void(0)"><i class="icofont-navigation-menu"></i></a>
-                        </div>
+                        @if (Route::has('login'))
+                            <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
+                                @auth
+                                    <div class="sing_up_btn">
+                                        <a class="btn btn-link" href="{{ url('/dashboard') }}">ACCOUNT
+                                            <img src="{{ asset('frontend/assets/img/icon/arrrow-icon2.webp') }}" />
+                                        </a>
+                                    </div>
+                                @else
+                                    <div class="sing_up_btn">
+                                        <a class="btn btn-link" href="{{ route('login') }}">LOGIN
+                                            <img src="{{ asset('frontend/assets/img/icon/arrrow-icon2.webp') }}" />
+                                        </a>
+                                    </div>
+                                @endauth
+                                <div class="canvas_open">
+                                    <a href="javascript:void(0)"><i class="icofont-navigation-menu"></i></a>
+                                </div>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

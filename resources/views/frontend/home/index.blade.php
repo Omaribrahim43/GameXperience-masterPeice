@@ -1,5 +1,6 @@
 @extends('frontend.layouts.master')
 
+@section('page_title', 'Home')
 @section('content')
     <!-- page wrapper start -->
     <div class="page_wrapper">

@@ -17,4 +17,8 @@ class Device extends Model
     {
         return $this->belongsTo(Lounges::class);
     }
+    function bookings()
+    {
+        return $this->hasMany(Bookings::class);
+    }
 }

@@ -19,6 +19,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <!-- End fonts -->
     
+    <link rel="stylesheet" href="{{ asset('backend/assets/vendors/flatpickr/flatpickr.min.css') }}">
+
     <link rel="stylesheet" href="{{ asset('backend/assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css') }}">
     
     <link rel="stylesheet" href="{{ asset('backend/assets/vendors/dropzone/dropzone.min.css') }}">
@@ -100,6 +102,9 @@
 
     <script src="{{ asset('backend/assets/vendors/dropzone/dropzone.min.js') }}"></script>
     <script src="{{ asset('backend/assets/js/dropzone.js') }}"></script>
+
+    <script src="{{ asset('backend/assets/vendors/flatpickr/flatpickr.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/flatpickr.js') }}"></script>
     <script>
         @if (Session::has('message'))
             var type = "{{ Session::get('alert-type', 'info') }}"

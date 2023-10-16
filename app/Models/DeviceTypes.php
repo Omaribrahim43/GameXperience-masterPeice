@@ -19,4 +19,13 @@ class DeviceTypes extends Model
     {
         return $this->hasMany(LoungeDeviceTypes::class);
     }
+
+    function userBalance()
+    {
+        return $this->hasMany(UserBalance::class);
+    }
+    function bookings()
+    {
+        return $this->hasMany(Bookings::class);
+    }
 }
